@@ -8,7 +8,7 @@ export function Form() {
       <input type="text" placeholder='Adicione uma nova tarefa' className={styles.input} />
       <button type="submit" className={styles.button}>
         Criar
-        <PlusCircle size={16} />
+        <PlusCircle size={16} weight='bold' />
       </button>
     </form>
   )

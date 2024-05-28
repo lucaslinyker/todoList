@@ -28,6 +28,9 @@
   border-radius: 8px;
   background: var(--blue-dark);
   color: var(--gray-100);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 150ms;
 }
 
 .button:hover {
