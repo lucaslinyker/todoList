@@ -1,7 +1,6 @@
 .section {
   margin-top: calc(64px - (52.8px / 2));
-  max-width: 736px;
-  width: 100%;
+  /* desconta o deslocamento do formulário */
 }
 
 .header {

@@ -1,6 +1,4 @@
 .form {
-  max-width: 736px;
-  width: 100%;
   display: flex;
   gap: 8px;
   transform: translateY(-50%);
