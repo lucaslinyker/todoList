@@ -11,6 +11,8 @@
   border-radius: 8px;
   padding: 1rem;
   flex: 1;
+  box-shadow: 0 0 0 1px var(--gray-700);
+  transition: box-shadow 150ms;
 }
 
 .input::placeholder {
