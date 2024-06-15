@@ -5,7 +5,23 @@ import Clipboard from '/clipboard.svg'
 
 import styles from './Tasks.module.css'
 
-export function Tasks({ tasks }) {
+export function Tasks({ tasks, setTasks }) {
+  function handleCompleteTask(e) {
+    const taskId = e.target.closest('li').id
+    const task = tasks.find(task => task.id === +taskId)
+
+    if (task.completed === false) {
+      setTasks(tasks.map(task => task.id === +taskId ? { ...task, completed: true } : task))
+    } else {
+      setTasks(tasks.map(task => task.id === +taskId ? { ...task, completed: false } : task))
+    }
+  }
+
+  function handleDeleteTask(e) {
+    const taskId = e.target.closest('li').id
+    setTasks(tasks.filter(task => task.id !== +taskId))
+  }
+
   return (
     <section className={styles.section}>
       <div className={styles.header}>
@@ -26,14 +42,14 @@ export function Tasks({ tasks }) {
           <li key={task.id} id={task.id}>
             <form>
               {task.completed === true ? (
-                <input type="checkbox" defaultChecked />
+                <input type="checkbox" onChange={handleCompleteTask} defaultChecked />
               ) : (
-                <input type="checkbox" />
+                <input type="checkbox" onChange={handleCompleteTask} />
               )}
 
               <p>{task.text}</p>
 
-              <button type="button">
+              <button type="button" onClick={handleDeleteTask}>
                 <Trash />
               </button>
             </form>
