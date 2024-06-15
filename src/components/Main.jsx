@@ -9,10 +9,17 @@ import formStyles from './Form.module.css'
 
 export function Main() {
   const [inputText, setInputText] = useState('')
+  const [tasks, setTasks] = useState([])
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    setInputText('')
+    setTasks([...tasks, { id: tasks.length + 1, text: inputText, completed: false }])
+  }
 
   return (
     <main className={styles.main}>
-      <form className={formStyles.form}>
+      <form onSubmit={handleSubmit} className={formStyles.form}>
         <input
           type='text'
           placeholder='Adicione uma nova tarefa'
@@ -28,7 +35,7 @@ export function Main() {
         </button>
       </form>
 
-      <Tasks />
+      <Tasks tasks={tasks} setTasks={setTasks} />
     </main>
   )
 }
