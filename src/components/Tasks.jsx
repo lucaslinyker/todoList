@@ -18,6 +18,8 @@ export function Tasks({ tasks, setTasks }) {
   }
 
   function handleDeleteTask(e) {
+    if (!confirm('Deseja mesmo apagar essa tarefa?')) return
+
     const taskId = e.target.closest('li').id
     setTasks(tasks.filter(task => task.id !== +taskId))
   }
@@ -33,6 +35,7 @@ export function Tasks({ tasks, setTasks }) {
           <p>Concluídas</p>
           <span className={styles.span}>
             {tasks.filter(task => task.completed === true).length}
+            {tasks.length >= 1 && ` de ${tasks.length}`}
           </span>
         </div>
       </div>
