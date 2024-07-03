@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Trash } from '@phosphor-icons/react'
+import { CheckCircle, Circle, Trash } from '@phosphor-icons/react'
 
 import Clipboard from '/clipboard.svg'
 
@@ -37,24 +37,35 @@ export function Tasks({ tasks, setTasks }) {
         </div>
       </div>
 
-      <ul>
-        {tasks.map(task => (
-          <li key={task.id} id={task.id}>
-            <form>
-              {task.completed === true ? (
-                <input type="checkbox" onChange={handleCompleteTask} defaultChecked />
-              ) : (
-                <input type="checkbox" onChange={handleCompleteTask} />
-              )}
+      <ul className={styles.tasksList}>
+        {tasks.map(task => {
+          const classBorderTask = `${styles.taskItem} ${!task.completed && styles.borderTaskItem}`
 
-              <p>{task.text}</p>
+          const classIconCheckbox = `
+            ${styles.iconCheckbox}
+            ${task.completed ? styles.iconCheckboxChecked : styles.iconCheckboxUnchecked}
+          `
 
-              <button type="button" onClick={handleDeleteTask}>
-                <Trash />
-              </button>
-            </form>
-          </li>
-        ))}
+          const classParagraphTask = `${styles.content} ${task.completed && styles.lineTroughParagraph}`
+
+          return (
+            <li key={task.id} id={task.id}>
+              <form className={classBorderTask}>
+                <button type="button" onClick={handleCompleteTask} className={styles.btnComplete}>
+                  {task.completed ?
+                    <CheckCircle size={24} weight="fill" className={classIconCheckbox} /> :
+                    <Circle size={24} className={classIconCheckbox} />
+                  }
+                </button>
+
+                <p className={classParagraphTask}>{task.text}</p>
+
+                <button type="button" onClick={handleDeleteTask} className={styles.btnDelete}>
+                  <Trash size={20} />
+                </button>
+              </form>
+            </li>
+          )})}
       </ul>
 
       {tasks.length === 0 && (
