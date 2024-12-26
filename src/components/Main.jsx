@@ -28,8 +28,9 @@ export function Main() {
           onChange={e => setInputText(e.target.value)}
           autoFocus
           required
+          data-testid='input'
         />
-        <button type='submit' className={formStyles.button}>
+        <button type='submit' className={formStyles.button} data-testid='create'>
           Criar
           <PlusCircle size={16} weight='bold' />
         </button>

@@ -40,7 +40,7 @@ export function Tasks({ tasks, setTasks }) {
         </div>
       </div>
 
-      <ul className={styles.tasksList}>
+      <ul className={styles.tasksList} id='tasksList'>
         {tasks.map(task => {
           const classBorderTask = `${styles.taskItem} ${!task.completed && styles.borderTaskItem}`
 
@@ -54,7 +54,7 @@ export function Tasks({ tasks, setTasks }) {
           return (
             <li key={task.id} id={task.id}>
               <form className={classBorderTask}>
-                <button type="button" onClick={handleCompleteTask} className={styles.btnComplete}>
+                <button type="button" onClick={handleCompleteTask} className={styles.btnComplete} data-testid="complete">
                   {task.completed ?
                     <CheckCircle size={24} weight="fill" className={classIconCheckbox} /> :
                     <Circle size={24} className={classIconCheckbox} />
@@ -63,7 +63,7 @@ export function Tasks({ tasks, setTasks }) {
 
                 <p className={classParagraphTask}>{task.text}</p>
 
-                <button type="button" onClick={handleDeleteTask} className={styles.btnDelete}>
+                <button type="button" onClick={handleDeleteTask} className={styles.btnDelete} data-testid="delete">
                   <Trash size={20} />
                 </button>
               </form>
@@ -74,7 +74,7 @@ export function Tasks({ tasks, setTasks }) {
       {tasks.length === 0 && (
         <div className={styles.empty}>
           <img src={Clipboard} height={56} alt='Clipboard' />
-          <p className={styles.p}>
+          <p className={styles.p} data-testid="empty">
             <strong>Você ainda não tem tarefas cadastradas</strong>
             <br />
             Crie tarefas e organize seus itens a fazer
