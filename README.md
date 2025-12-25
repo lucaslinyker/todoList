@@ -211,9 +211,9 @@ Don't forget to give the project a star! Thanks again!
     </a>
   </li>
   <li>
-    <a href="https://www.linkedin.com/in/lucas-linyker-634a4827a" style="display: flex; gap: 10px" title="Click to view LinkedIn">
+    <a href="https://www.linkedin.com/in/lucaslinyker" style="display: flex; gap: 10px" title="Click to view LinkedIn">
       <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white">
-      <span>/lucas-linyker-634a4827a</span>
+      <span>/lucaslinyker</span>
     </a>
   </li>
   <li>
